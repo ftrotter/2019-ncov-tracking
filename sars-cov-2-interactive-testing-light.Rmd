@@ -24,8 +24,10 @@ pacman::p_load( tidyverse ,
 
 options(tigris_class = "sf")
 
+# TODO This code uses the soon to be retiring API for healthdata.gov
+# legacy domain name will work for a bit longer... 
 aid_capacity_state <- 
-  read_csv("https://healthdata.gov/node/3281106/download") %>% 
+  read_csv("https://legacy.healthdata.gov/node/3281106/download") %>% 
   filter( state != "CW" & state %in% c(state.abb,"DC")) %>% 
   clean_names() %>% 
   mutate( date = collection_date ) %>%
